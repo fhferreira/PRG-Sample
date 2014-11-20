@@ -15,7 +15,7 @@ $app->get('/signup', function () use ($app) {
     return $app['twig']->render('signup.twig');
 });
 
-$app->post('/process_signup', function (Request $request) use ($app) {
+$app->post('/signup', function (Request $request) use ($app) {
     $app['session']->set('username', $request->get('username'));
     $app['session']->set('password', md5($request->get('password')));
 
@@ -32,7 +32,7 @@ $app->get('/signup_confirmation', function (Request $request) use ($app) {
     );
 });
 
-$app->post('/process_confirmation', function (Request $request) use ($app) {
+$app->post('/signup_confirmation', function (Request $request) use ($app) {
     $app['session']->set('confirmed', true);
 
     return $app->redirect('/index.php/success', 303);
